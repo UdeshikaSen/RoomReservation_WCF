@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RoomReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="reservationId" />
+    </Key>
+    <Property Name="reservationId" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="reservationDate" Type="datetime" />
+    <Property Name="noOfAdults" Type="int" />
+    <Property Name="noOfChildren" Type="int" />
+    <Property Name="totalCost" Type="float" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="reservation_user">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="255" />
+    <Property Name="user_address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="room">
+    <Key>
+      <PropertyRef Name="roomNo" />
+    </Key>
+    <Property Name="roomNo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="roomType" Type="varchar" MaxLength="150" />
+    <Property Name="price" Type="varchar" MaxLength="150" />
+    <Property Name="noOfBeds" Type="varchar" MaxLength="150" />
+    <Property Name="maxNoOfPeople" Type="varchar" MaxLength="150" />
+    <Property Name="roomState" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="room_reservation">
+    <Key>
+      <PropertyRef Name="roomNo" />
+      <PropertyRef Name="reservationId" />
+    </Key>
+    <Property Name="checkIn" Type="datetime" />
+    <Property Name="checkout" Type="datetime" />
+    <Property Name="reservationState" Type="varchar" MaxLength="255" />
+    <Property Name="roomNo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="reservationId" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__reservati__email__1920BF5C">
+    <End Role="reservation_user" Type="Self.reservation_user" Multiplicity="0..1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation_user">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room_rese__reser__1CF15040">
+    <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+    <End Role="room_reservation" Type="Self.room_reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation">
+        <PropertyRef Name="reservationId" />
+      </Principal>
+      <Dependent Role="room_reservation">
+        <PropertyRef Name="reservationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room_rese__roomN__1BFD2C07">
+    <End Role="room" Type="Self.room" Multiplicity="1" />
+    <End Role="room_reservation" Type="Self.room_reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="roomNo" />
+      </Principal>
+      <Dependent Role="room_reservation">
+        <PropertyRef Name="roomNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RoomReservationModelStoreContainer">
+    <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservation_user" EntityType="Self.reservation_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="room_reservation" EntityType="Self.room_reservation" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__reservati__email__1920BF5C" Association="Self.FK__reservati__email__1920BF5C">
+      <End Role="reservation_user" EntitySet="reservation_user" />
+      <End Role="reservation" EntitySet="reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room_rese__reser__1CF15040" Association="Self.FK__room_rese__reser__1CF15040">
+      <End Role="reservation" EntitySet="reservation" />
+      <End Role="room_reservation" EntitySet="room_reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room_rese__roomN__1BFD2C07" Association="Self.FK__room_rese__roomN__1BFD2C07">
+      <End Role="room" EntitySet="room" />
+      <End Role="room_reservation" EntitySet="room_reservation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

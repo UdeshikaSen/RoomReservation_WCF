@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RoomReservationModelStoreContainer" CdmEntityContainer="RoomReservationEntities">
+    <EntitySetMapping Name="reservations">
+      <EntityTypeMapping TypeName="RoomReservationModel.reservation">
+        <MappingFragment StoreEntitySet="reservation">
+          <ScalarProperty Name="reservationId" ColumnName="reservationId" />
+          <ScalarProperty Name="reservationDate" ColumnName="reservationDate" />
+          <ScalarProperty Name="noOfAdults" ColumnName="noOfAdults" />
+          <ScalarProperty Name="noOfChildren" ColumnName="noOfChildren" />
+          <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservation_user">
+      <EntityTypeMapping TypeName="RoomReservationModel.reservation_user">
+        <MappingFragment StoreEntitySet="reservation_user">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="user_address" ColumnName="user_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="RoomReservationModel.room">
+        <MappingFragment StoreEntitySet="room">
+          <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+          <ScalarProperty Name="roomType" ColumnName="roomType" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="noOfBeds" ColumnName="noOfBeds" />
+          <ScalarProperty Name="maxNoOfPeople" ColumnName="maxNoOfPeople" />
+          <ScalarProperty Name="roomState" ColumnName="roomState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="room_reservation">
+      <EntityTypeMapping TypeName="RoomReservationModel.room_reservation">
+        <MappingFragment StoreEntitySet="room_reservation">
+          <ScalarProperty Name="checkIn" ColumnName="checkIn" />
+          <ScalarProperty Name="checkout" ColumnName="checkout" />
+          <ScalarProperty Name="reservationState" ColumnName="reservationState" />
+          <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+          <ScalarProperty Name="reservationId" ColumnName="reservationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

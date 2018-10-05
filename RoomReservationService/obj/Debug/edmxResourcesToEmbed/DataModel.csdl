@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RoomReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="reservationId" />
+    </Key>
+    <Property Name="reservationId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reservationDate" Type="DateTime" Precision="3" />
+    <Property Name="noOfAdults" Type="Int32" />
+    <Property Name="noOfChildren" Type="Int32" />
+    <Property Name="totalCost" Type="Double" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="reservation_user" Relationship="Self.FK__reservati__email__1920BF5C" FromRole="reservation" ToRole="reservation_user" />
+    <NavigationProperty Name="room_reservation" Relationship="Self.FK__room_rese__reser__1CF15040" FromRole="reservation" ToRole="room_reservation" />
+  </EntityType>
+  <EntityType Name="reservation_user">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__email__1920BF5C" FromRole="reservation_user" ToRole="reservation" />
+  </EntityType>
+  <EntityType Name="room">
+    <Key>
+      <PropertyRef Name="roomNo" />
+    </Key>
+    <Property Name="roomNo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="roomType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="noOfBeds" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="maxNoOfPeople" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="roomState" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="room_reservation" Relationship="Self.FK__room_rese__roomN__1BFD2C07" FromRole="room" ToRole="room_reservation" />
+  </EntityType>
+  <EntityType Name="room_reservation">
+    <Key>
+      <PropertyRef Name="roomNo" />
+      <PropertyRef Name="reservationId" />
+    </Key>
+    <Property Name="checkIn" Type="DateTime" Precision="3" />
+    <Property Name="checkout" Type="DateTime" Precision="3" />
+    <Property Name="reservationState" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomNo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reservationId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="reservation" Relationship="Self.FK__room_rese__reser__1CF15040" FromRole="room_reservation" ToRole="reservation" />
+    <NavigationProperty Name="room" Relationship="Self.FK__room_rese__roomN__1BFD2C07" FromRole="room_reservation" ToRole="room" />
+  </EntityType>
+  <Association Name="FK__reservati__email__1920BF5C">
+    <End Role="reservation_user" Type="Self.reservation_user" Multiplicity="0..1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation_user">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room_rese__reser__1CF15040">
+    <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+    <End Role="room_reservation" Type="Self.room_reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation">
+        <PropertyRef Name="reservationId" />
+      </Principal>
+      <Dependent Role="room_reservation">
+        <PropertyRef Name="reservationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room_rese__roomN__1BFD2C07">
+    <End Role="room" Type="Self.room" Multiplicity="1" />
+    <End Role="room_reservation" Type="Self.room_reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="roomNo" />
+      </Principal>
+      <Dependent Role="room_reservation">
+        <PropertyRef Name="roomNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RoomReservationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="reservations" EntityType="Self.reservation" />
+    <EntitySet Name="reservation_user" EntityType="Self.reservation_user" />
+    <EntitySet Name="rooms" EntityType="Self.room" />
+    <EntitySet Name="room_reservation" EntityType="Self.room_reservation" />
+    <AssociationSet Name="FK__reservati__email__1920BF5C" Association="Self.FK__reservati__email__1920BF5C">
+      <End Role="reservation_user" EntitySet="reservation_user" />
+      <End Role="reservation" EntitySet="reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room_rese__reser__1CF15040" Association="Self.FK__room_rese__reser__1CF15040">
+      <End Role="reservation" EntitySet="reservations" />
+      <End Role="room_reservation" EntitySet="room_reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room_rese__roomN__1BFD2C07" Association="Self.FK__room_rese__roomN__1BFD2C07">
+      <End Role="room" EntitySet="rooms" />
+      <End Role="room_reservation" EntitySet="room_reservation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,10 @@
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\RoomReservationService.dll.config
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\RoomReservationService.dll
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\RoomReservationService.pdb
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\EntityFramework.dll
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\EntityFramework.xml
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\obj\Debug\RoomReservationService.csprojResolveAssemblyReference.cache
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\obj\Debug\RoomReservationService.dll
+c:\users\udeshika\documents\visual studio 2017\Projects\RoomReservationService\RoomReservationService\obj\Debug\RoomReservationService.pdb

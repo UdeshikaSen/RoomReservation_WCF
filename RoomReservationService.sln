@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomReservationService", "RoomReservationService\RoomReservationService.csproj", "{4BEE2549-9D57-4EBE-AC8D-41732AB889BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomReservationServiceHost", "RoomReservationServiceHost\RoomReservationServiceHost.csproj", "{02CB781E-24F1-406D-8F20-62F6B17117F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BEE2549-9D57-4EBE-AC8D-41732AB889BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BEE2549-9D57-4EBE-AC8D-41732AB889BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BEE2549-9D57-4EBE-AC8D-41732AB889BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BEE2549-9D57-4EBE-AC8D-41732AB889BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CB781E-24F1-406D-8F20-62F6B17117F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CB781E-24F1-406D-8F20-62F6B17117F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CB781E-24F1-406D-8F20-62F6B17117F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CB781E-24F1-406D-8F20-62F6B17117F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
