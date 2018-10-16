@@ -11,7 +11,7 @@ namespace RoomReservationService
     public class RoomReservationService : IRoomReservationService
     {
         private RoomReservationEntities entities = new RoomReservationEntities();
-        
+
         public User GetUser(string userId)
         {
             try
@@ -159,13 +159,16 @@ namespace RoomReservationService
             return roomTypes;
         }
 
-        public List<Room> GetAvailableRooms(string roomType, DateTime checkIn, DateTime checkOut)
+        public List<Room> GetAvailableRooms(string roomType, string checkInString, string checkOutString)
         {
             List<Room> roomList = new List<Room>();
             List<room> entityRoomList;
 
             try
             {
+                DateTime checkIn = DateTime.Parse(checkInString);
+                DateTime checkOut = DateTime.Parse(checkOutString);
+
                 if (roomType.ToLower().Equals("all"))
                 {
                     entityRoomList = (from room in entities.rooms

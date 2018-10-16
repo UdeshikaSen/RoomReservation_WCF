@@ -12,31 +12,31 @@ namespace RoomReservationService
     public interface IRoomReservationService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/GetUser")]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetUser/{userId}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         User GetUser(string userId);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/GetUsers")]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetUsers", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<User> GetUsers();
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/RegisterUser")]
+        [WebInvoke(Method = "POST", UriTemplate = "/RegisterUser", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string RegisterUser(string userEmail, string userName, string userPhone, string userAddress);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/GetRooms")]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetRooms", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<Room> GetRooms();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/GetRoomTypes")]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetRoomTypes", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<String> GetRoomTypes();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/GetAvailableRooms")]
-        List<Room> GetAvailableRooms(string roomType, DateTime checkIn, DateTime checkOut);
+        [WebInvoke(Method = "GET", UriTemplate = "/GetAvailableRooms/{roomType}/{checkIn}/{checkOut}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        List<Room> GetAvailableRooms(string roomType, string checkIn, string checkOut);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/ReserveRoom")]
+        [WebInvoke(Method = "POST", UriTemplate = "/ReserveRoom", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string ReserveRoom(string roomNo, int adults, int children, double reservationCost, string userEmail, DateTime inDateTime, DateTime outDateTime);
 
     }
